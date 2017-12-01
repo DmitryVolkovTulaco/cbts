@@ -25,16 +25,16 @@ module.exports = function() {
 
     config.output = {
         filename: isBuildEnv ? '[name]-[hash].js' : '[name].bundle.js',
-        path: resolve(__dirname, 'build'),
+        path: resolve(__dirname, 'docs'),
         publicPath: isBuildEnv ? '' : 'http://localhost:8080/'
     };
 
-    config.devtool = isBuildEnv ? (ENV === 'build-prod' ? false : 'source-map') : 'eval-source-map';
+    config.devtool = isBuildEnv ? (ENV === 'build' ? false : 'source-map') : 'eval-source-map';
 
     if(!isBuildEnv) {
         config.devServer = {
             hot: true,
-            contentBase: resolve(__dirname, 'build'),
+            contentBase: resolve(__dirname, 'docs'),
             publicPath: '/'
         };
     }
@@ -90,7 +90,7 @@ module.exports = function() {
         config.plugins.push(
             new webpack.NoEmitOnErrorsPlugin(),
             new webpack.optimize.UglifyJsPlugin({
-                sourceMap: ENV !== 'build-prod',
+                sourceMap: ENV !== 'build',
                 parallel: true
             })
         )
