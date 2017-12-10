@@ -1,4 +1,4 @@
-const { resolve, join } = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -38,12 +38,6 @@ module.exports = function() {
             publicPath: '/'
         };
     }
-
-    config.resolve = {
-        alias: {
-            '@images': resolve(__dirname, 'assets/images')
-        }
-    };
 
     config.module = {
         rules: [

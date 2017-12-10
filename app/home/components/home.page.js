@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -7,7 +7,7 @@ import notification from '../../common/services/notificationService';
 
 import "../home.scss"
 
-class HomePage extends Component {
+class HomePage extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -51,7 +51,7 @@ class HomePage extends Component {
                 <div className="category">Category: {item.category}</div>
                 <div className="diff">Difficulty: {item.difficulty}</div>
                 <div className="question">Question: {item.question}</div>
-                    <div>{this.renderAnswers(item)}</div>
+                <div>{this.renderAnswers(item)}</div>
             </div>
         )
     };
